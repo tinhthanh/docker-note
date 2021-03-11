@@ -1,0 +1,2 @@
+// using volume other conainer 
+docker-compose start
