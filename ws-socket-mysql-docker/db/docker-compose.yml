@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  db:
+    container_name: MYSQL
+    image: mysql/mysql-server:latest
+    environment:
+      MYSQL_DATABASE: master
+      MYSQL_USER: devteam
+      MYSQL_PASSWORD: dev@123#
+      MYSQL_ROOT_PASSWORD: dev@123#
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./init-dump:/docker-entrypoint-initdb.d
+      - ./config/config.cnf:/etc/mysql/conf.d/config.cnf
+    restart: always

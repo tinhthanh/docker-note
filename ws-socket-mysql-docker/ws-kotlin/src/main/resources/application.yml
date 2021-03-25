@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: pro-socket
+  mvc:
+    async:
+      request-timeout: -1
+  datasource:
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:master}?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8&rewriteBatchedStatements=true
+    username: ${DB_USERNAME:devteam}
+    password: ${DB_PASSWORD:dev@123#}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    maximum-pool-size: 1
+  output:
+    ansi:
+      enabled: NEVER
+
+server:
+  servlet:
+    contextPath: /pro-socket
+  port: 8890
+  compression:
+    enabled: true
+    min-response-size: 512
+
+logging:
+  file: logs/pro-socket.log
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    shutdown:
+      enabled: false
